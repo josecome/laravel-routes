@@ -41,7 +41,7 @@ Route::get(
     '/page/{category}', function ($category) {}
 )->whereIn('category', ['movie', 'song', 'painting']);
 
-Route::get('page/{slug}', function ($slug) {})->can('update', $post);
+Route::get('page/{slug}', function ($slug) {});
 
 //Grouped route
 Route::middleware('auth')->group(function () {
