@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,35 +20,35 @@ Route::get('/', function () {
 });
 
 /* Dinamic Route*/
-Route::get('/page/{slug}', function ($slug) {});
+Route::get('/page/{slug}', [PageController::class, 'Page']);
 
 /* Dinamic Route that only accept letters as parameter */
-Route::get('/page/{slug}', function ($slug) {})->where('slug', '[A-Za-z]+');
+Route::get('/page/{slug}',  [PageController::class, 'Page'])->where('slug', '[A-Za-z]+');
 
 /* Dinamic Route that only accept number as parameter */
-Route::get('/page/{id}', function ($id) {})->where('id', '[0-9]+');
+Route::get('/page/{id}',  [PageController::class, 'Page'])->where('id', '[0-9]+');
 
 /* Option 1: Dinamic Route that only accept number as first parameter and letters as second parameter */
-Route::get('/page/{id}/{slug}', function ($id, $name) {})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+Route::get('/page/{id}/{slug}',  [PageController::class, 'Page'])->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 
 /* Option 2: Dinamic Route that only accept number as first parameter and letters as second parameter */
-Route::get('/page/{id}/{name}', function ($id, $name) {})->whereNumber('id')->whereAlpha('name');
+Route::get('/page/{id}/{name}',  [PageController::class, 'Page'])->whereNumber('id')->whereAlpha('name');
 
-Route::get('/page/{name}', function ($name) {})->whereAlphaNumeric('name');
+Route::get('/page/{name}',  [PageController::class, 'Page'])->whereAlphaNumeric('name');
 
-Route::get('/page/{id}', function ($id) {})->whereUuid('id');
+Route::get('/page/{id}',  [PageController::class, 'Page'])->whereUuid('id');
 
-Route::get(
-    '/page/{category}', function ($category) {}
-)->whereIn('category', ['movie', 'song', 'painting']);
+/*Route::get(
+    '/page/{category}',  [PageController::class, 'Page']
+)->whereIn('category', ['movie', 'song', 'painting']);*/
 
-Route::get('page/{slug}', function ($slug) {});
+Route::get('page/{slug}',  [PageController::class, 'Page']);
 
 //Grouped route
-Route::middleware('auth')->group(function () {
+/*Route::middleware('auth')->group(function () {
     Route::get('page/{slug}', function ($slug) {});
     Route::get('category/{slug}', function ($slug) {});
-});
+});*/
 
 //Optional Parameters
 Route::get('/page/{slug?}', function (string $slug = null) {

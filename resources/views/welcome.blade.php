@@ -8,6 +8,6 @@
 
     </head>
     <body>
-     <div><h1>Wellcome page!</h1></div>
+     <div><h1>Wellcome page!</h1><br />Page: {{ $page }}</div>
     </body>
 </html>
