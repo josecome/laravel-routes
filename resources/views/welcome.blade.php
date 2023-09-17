@@ -8,6 +8,11 @@
 
     </head>
     <body>
-     <div><h1>Wellcome page!</h1><br />Page: {{ $page }}</div>
+     <div><h1>Wellcome page!</h1><br />Page: @if (isset($page)) {{ $page }} @endif</div>
+     <div>
+     <strong>Routes</strong><br />
+     <a href="{{ route('page.a') }}">Page a</a><br />
+
+     </div>
     </body>
 </html>
