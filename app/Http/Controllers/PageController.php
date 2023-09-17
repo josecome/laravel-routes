@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    function Page(Request $req, $slug) {
+    function Page(Request $req, int $id = null, string $slug = null) {
         $page = $slug;
         return view('welcome', ['page' => $page]);
     }
